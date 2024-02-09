@@ -24,6 +24,7 @@ interface IExtensions {
     val view: IViewExtensions
     val commands: ICommandsExtensions
     val language: ILanguageExtensions
+    val autocomplete: IAutocompleteExtensions
 }
 
 interface IViewExtensions {
@@ -49,6 +50,10 @@ interface ILanguageExtensions {
     fun syntaxHighlighting(highlighter: dynamic, options: dynamic = object : Any() {}): dynamic
     fun bracketMatching(config: dynamic = object : Any() {}): dynamic
     fun foldGutter(config: dynamic = object : Any() {}): dynamic
+}
+
+interface IAutocompleteExtensions {
+    fun autocompletion(config: dynamic = object : Any() {}): dynamic
 }
 
 interface IStateEffect_static {

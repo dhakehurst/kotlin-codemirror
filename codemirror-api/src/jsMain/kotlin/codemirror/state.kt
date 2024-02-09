@@ -1,7 +1,5 @@
 package codemirror.state
 
-import org.w3c.dom.SelectionMode
-
 external interface EditorStateConfig {
     var doc: String
     var selection: dynamic //EditorSelection | {anchor: number, head?: number}

@@ -31,6 +31,10 @@ object CodeMirror : ICodeMirror {
             override fun foldGutter(config: dynamic) = codemirror.extensions.language.foldGutter(config)
 
         }
+
+        override val autocomplete: IAutocompleteExtensions = object :IAutocompleteExtensions {
+            override fun autocompletion(config: dynamic): dynamic = codemirror.extensions.autocomplete.autocompletion(config)
+        }
     }
 
     override val view = object : IView_static {
