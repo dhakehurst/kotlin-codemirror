@@ -1,5 +1,21 @@
 package codemirror.state
 
+interface IState_static {
+    val StateEffect: IStateEffect_static
+
+    val StateField: IStateField_static
+
+    fun createState(config: EditorStateConfig): IEditorState
+    fun createCompartment(): ICompartment
+
+    fun allowMultipleSelections()
+}
+
+interface IStateEffect_static {
+    fun <V> define(spec: dynamic = object : Any() {}): IStateEffectType<V>
+    fun <V> appendConfig(): IStateEffectType<V>
+}
+
 external interface EditorStateConfig {
     var doc: String
     var selection: dynamic //EditorSelection | {anchor: number, head?: number}

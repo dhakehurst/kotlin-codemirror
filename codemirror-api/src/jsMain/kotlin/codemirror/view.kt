@@ -4,6 +4,17 @@ import codemirror.language.Direction
 import codemirror.state.*
 import org.w3c.dom.HTMLElement
 
+interface IViewExtensions {
+    fun crosshairCursor(options: dynamic = object : Any() {}): dynamic
+    fun drawSelection(config: dynamic = object : Any() {}): dynamic
+    fun dropCursor(): dynamic
+    fun highlightActiveLine(): dynamic
+    fun highlightActiveLineGutter(): dynamic
+    fun highlightSpecialChars(): dynamic
+    fun lineNumbers(config: dynamic = object : Any() {}): dynamic
+    fun rectangularSelection(): dynamic
+}
+
 interface IView_static {
     val EditorView: IEditorView_static
     val Decoration: IDecoration_static
@@ -35,7 +46,6 @@ interface IEditorView_static {
     val decorations: IFacet<(view: IEditorView) -> DecorationSet, Any>
     fun scrollIntoView(pos: Int): IStateEffect<*>
     fun theme(spec: dynamic, options: dynamic = null): dynamic //Extension
-
 }
 
 external interface EditorViewConfig : EditorStateConfig {

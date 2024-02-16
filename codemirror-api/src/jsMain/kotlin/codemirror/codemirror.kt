@@ -1,8 +1,12 @@
 package codemirror
 
 import codemirror.language.*
+import codemirror.lint.Diagnostic
+import codemirror.lint.ILintExtensions
+import codemirror.lint.LinterConfig
 import codemirror.state.*
 import codemirror.view.*
+import kotlin.js.Promise
 
 interface ICodeMirror {
     val extensions: IExtensions
@@ -10,13 +14,7 @@ interface ICodeMirror {
     val language: ILanguage_static
     val view: IView_static
 
-    val StateEffect: IStateEffect_static
-
-    val StateField: IStateField_static
-
-    fun createState(config: EditorStateConfig): IEditorState
-    fun createCompartment(): ICompartment
-
+    val state:IState_static
 
 }
 
@@ -25,22 +23,12 @@ interface IExtensions {
     val commands: ICommandsExtensions
     val language: ILanguageExtensions
     val autocomplete: IAutocompleteExtensions
+    val lint: ILintExtensions
 }
 
-interface IViewExtensions {
-    fun crosshairCursor(options: dynamic = object : Any() {}): dynamic
-    fun drawSelection(config: dynamic = object : Any() {}): dynamic
-    fun dropCursor(): dynamic
-    fun highlightActiveLine(): dynamic
-    fun highlightActiveLineGutter(): dynamic
-    fun highlightSpecialChars(): dynamic
-    fun keymap(): dynamic
-    fun lineNumbers(config: dynamic = object : Any() {}): dynamic
-    fun rectangularSelection(): dynamic
-}
+
 
 interface ICommandsExtensions {
-    fun defaultKeymap(): dynamic
     fun history(): dynamic
     fun historyKeymap(): dynamic
 }
@@ -56,9 +44,8 @@ interface IAutocompleteExtensions {
     fun autocompletion(config: dynamic = object : Any() {}): dynamic
 }
 
-interface IStateEffect_static {
-    fun <V> define(spec: dynamic = object : Any() {}): IStateEffectType<V>
-    fun <V> appendConfig(): IStateEffectType<V>
-}
+
+
+
 
 

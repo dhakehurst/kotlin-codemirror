@@ -1,12 +1,18 @@
 package codemirror.autocomplete
 
 import org.w3c.dom.HTMLElement
-import org.w3c.dom.events.EventListener
+
+external interface CompletionContextMatchResult {
+    val from:Int
+    val to: Int
+    val text: String
+}
 
 external interface CompletionContext {
     val pos:Int
     val aborted:Boolean
     fun addEventListener(type:String, listener: ()->Unit)
+    fun matchBefore(expr: Regex): CompletionContextMatchResult?
 }
 
 external interface CompletionResult {
@@ -26,11 +32,19 @@ external interface CompletionResult {
      * (against the text between from and to) and sorting.
      */
     val options: Array<Completion>
-    //val validFor:
+
+    /**
+     * When given, further typing or deletion that causes the part of the document
+     * between (mapped) from and to match this regular expression or predicate
+     * function will not query the completion source again, but continue with this
+     * list of options. This can help a lot with responsiveness, since it allows
+     * the completion list to be updated synchronously.
+     */
+    val validFor: ((text:String, from:Int, to:Int, state:dynamic)->Boolean)?
 
     /**
      * By default, the library filters and scores completions.
-     * Set filter to false to disable this, and cause your completions to all be included,
+     * Set filter to false inorder to disable this, and cause your completions to all be included,
      * in the order they were given. When there are other sources, unfiltered completions
      * appear at the top of the list of completions. validFor must not be given when filter
      * is false, because it only works when filtering.

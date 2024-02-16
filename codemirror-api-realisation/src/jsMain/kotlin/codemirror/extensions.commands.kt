@@ -3,6 +3,8 @@
 
 package codemirror.extensions.commands
 
-external fun defaultKeymap():dynamic
+external val defaultKeymap:dynamic //readonly KeyBinding[]
+external val indentWithTab:dynamic
+external val historyKeymap:dynamic
+
 external fun history():dynamic
-external fun historyKeymap():dynamic

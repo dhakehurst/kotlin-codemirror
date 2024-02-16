@@ -6,6 +6,7 @@ package codemirror.state
 external class EditorState : IEditorState {
     companion object {
         fun create(config:EditorStateConfig?): EditorState
+        val allowMultipleSelections:dynamic
     }
 
     override val doc: Text
