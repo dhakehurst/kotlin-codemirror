@@ -30,7 +30,7 @@ interface IExtensions {
 
 interface ICommandsExtensions {
     fun history(): dynamic
-    fun historyKeymap(): dynamic
+    //fun historyKeymap(): dynamic
 }
 
 interface ILanguageExtensions {

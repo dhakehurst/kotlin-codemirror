@@ -93,3 +93,5 @@ external interface IDecoration : IRangeValue {
 }
 
 typealias DecorationSet = IRangeSet<IDecoration>
+
+external interface KeyBinding

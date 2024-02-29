@@ -3,6 +3,8 @@
 
 package codemirror.extensions.search
 
-external val searchKeymap:dynamic
+import codemirror.view.KeyBinding
+
+external val searchKeymap:Array<KeyBinding>
 
 external fun highlightSelectionMatches():dynamic

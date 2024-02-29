@@ -23,7 +23,7 @@ object CodeMirror : ICodeMirror {
 
         override val commands: ICommandsExtensions = object : ICommandsExtensions {
             override fun history() = codemirror.extensions.commands.history()
-            override fun historyKeymap() = codemirror.extensions.commands.historyKeymap()
+            //override fun historyKeymap() = codemirror.extensions.commands.historyKeymap()
         }
 
         override val language: ILanguageExtensions = object : ILanguageExtensions {
